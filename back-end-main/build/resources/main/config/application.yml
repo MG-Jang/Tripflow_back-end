@@ -1,0 +1,52 @@
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  main:
+    allow-circular-references: true
+  datasource:
+    url: ENC(3OY6jRLoB6jPQwdO+kMrAkELD6etitHhxuAmFGDjZzi/h2X1R7xi8wclWpsNZheE2neyvx/rMs77FW04AvOhb4VaThgSxZRMtFjwcWuV1ff8+1+TQe+8rVQanxlx5ebXiRhvVhH6rZZkUXreTe7gCtSS7iipk4uQoAE6coEW5q0zOh/d0pI11XlbkE0VaQjv)
+    username: ENC(HADQeNMLWFJ4SR6cFJX5hPdChdFusQfm)
+    password: ENC(fhQt2s9KUwO2nIQOvkf+91vn4hkqEHC6W3QBsL3Y7sE=)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # Image File Size
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+  # JWT
+  jwt:
+    secret: ENC(aXEaQEt7qi4dac6Yfzj2uEgmE6VUC2M1cCacnO+tgztUtLrh7u4pDodJk61zCvOwYtGt56s3dcEuaEPXS96ZxA==)
+
+# mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+#  config-location: classpath:/mapper/mybatis-config.xml
+
+# Jasypt
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    password: ENC(MmWNDeNRis3KQOwTvOE1ekFpqsnsl10XjB/yr9UIenrk3hsKX9P6LAs7JcLHYfDh)
+
+# s3
+cloud:
+  aws:
+    s3:
+      bucket: ENC(tCudlfxKh4usb5NImG3hDkyTG+5u4oQyAKVaOqgUs+s=)
+    stack.auto: false
+    region:
+      static: ENC(g4UDJxCQb+UIEagAs3gOQ4R/3xgMqgwG5baDm9LwMdE=)
+      auto: false
+    credentials:
+      accessKey: ENC(2gixqbqCPhLe8tAfKMmJncf71IqKpRWzwnrqm0v5024C4HR4gzDTxg==)
+      secretKey: ENC(qmt27rfhl34eDvMyVHYeYpoExEPteHZjwuDcmxf9vE6nFx86zIHl9JcEAiaFaCAm/MUo3CdCHimsgtQA+wsrkg==)
+
+logging:
+  level:
+    org:
+      mybatis: DEBUG
