@@ -31,6 +31,21 @@
         WHERE dd.postid IS NULL;
     </select>
 
+    <select id="findLike" resultType="com.ddabong.tripflow.board.dto.BoardDTO">
+        select count(*) likecount From tripflow.DDABONG where postid = "1";
+    </select>
+
+    <select id="findDetail" resultType="com.ddabong.tripflow.board.dto.BoardDTO">
+        select * from tripflow.POST
+        where postid = #{id} ;
+    </select>
+
+    <select id="findComment" resultType="com.ddabong.tripflow.board.dto.BoardDTO">
+        select * from tripflow.COMMENT where postid = #{id}
+        order by commentid asc;
+    </select>
+
+
 <!--    제목과 내용만 수정-->
     <update id="update">
         update board_table set boardTitle=#{boardTitle}, boardContents=#{boardContents} where id=#{id}

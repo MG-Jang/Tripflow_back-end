@@ -1,6 +1,7 @@
 package com.ddabong.tripflow.board.controller;
 
 import com.ddabong.tripflow.board.dto.BoardDTO;
+import com.ddabong.tripflow.board.dto.CommentDTO;
 import com.ddabong.tripflow.board.dto.ResponseDTO;
 import com.ddabong.tripflow.board.service.BoardService;
 import com.ddabong.tripflow.board.service.IBoardService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -74,6 +76,28 @@ public class BoardController {//클래스명 BoardController
         // BoardDTO 객체를 JSON 형식으로 반환
         return ResponseEntity.ok(boardDTO);
     }
+
+    //이미지를 선택하면 디테일한 데이터를 넘겨주는 데이터(좋아요 갯수, content, 댓글, 해쉬태그...)
+    @GetMapping("/list/{id}")
+    public  ResponseEntity<ResponseDTO> findDetail(@PathVariable("id") Long id){
+        List<BoardDTO> boardDTOLike = boardService.findLike(id); //좋아요 갯수
+        List<BoardDTO> boardDTODetail = boardService.findDetail(id); //postid, content
+        //List<BoardDTO> boardDTOHash = boardService.findHash(id);
+        List<BoardDTO> commentDTO = boardService.findComment(id);
+
+        List<BoardDTO> boardDTOList = new ArrayList<>();
+        boardDTOList.addAll(boardDTOLike);
+        boardDTOList.addAll(boardDTODetail);
+        boardDTOList.addAll(commentDTO);
+        //boardDTOList.addAll(findHash);
+
+        //boardDTOList.add(boardService.findById(id));
+        System.out.println("findById"+ boardDTOList);
+        ResponseDTO responseDTO = new ResponseDTO("success", 200, boardDTOList);
+        return  ResponseEntity.ok(responseDTO);
+    }
+
+
 
     @GetMapping("/update/{id}") // update 시 사용
     // URL에서 "id"라는 변수를 가져온다.

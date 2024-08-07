@@ -1,8 +1,8 @@
 package com.ddabong.tripflow.board.service;
 
-
 import com.ddabong.tripflow.board.dto.BoardDTO;
 import com.ddabong.tripflow.board.dao.IBoardRepository;
+import com.ddabong.tripflow.board.model.Ddabong;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 public class BoardService implements IBoardService {
 
+    //IBoardRepository를 boardRepository로 이름 변경
     @Autowired
     private IBoardRepository boardRepository;
 
@@ -29,6 +30,30 @@ public class BoardService implements IBoardService {
     public BoardDTO findById(Long id) {
         return boardRepository.findById(id);
     }
+
+    public List<BoardDTO> findDetail(Long id){
+        return boardRepository.findDetail(id);
+    }
+
+    public List<BoardDTO> findLike(Long id){
+        return boardRepository.findLike(id);
+    }
+
+//    public List<BoardDTO> findLikeRep(Long id) {
+//        //Ddabong ddabong = findLike(id);
+//        List<BoardDTO> boardDTOList = new ArrayList<>();
+//
+//        for(){
+//            BoardDTO boardDTO = new BoardDTO();
+//            ser~~~;
+//            boardDTOList.add(boardDTO);
+//        }
+//
+//
+//        return boardDTOList;
+//    }
+
+    public List<BoardDTO> findComment(Long id){return boardRepository.findComment(id);}
 
     public void update(BoardDTO boardDTO){
         boardRepository.update(boardDTO);

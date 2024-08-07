@@ -1,6 +1,7 @@
 package com.ddabong.tripflow.board.service;
 
 import com.ddabong.tripflow.board.dto.BoardDTO;
+import com.ddabong.tripflow.board.model.Ddabong;
 
 import java.util.List;
 
@@ -14,7 +15,14 @@ public interface IBoardService {
 
     BoardDTO findById(Long id);
 
+    List<BoardDTO> findDetail(Long id);
+
     void update(BoardDTO boardDTO);
 
     void delete(Long id);
+
+    List<BoardDTO> findLike(Long id);
+
+    List<BoardDTO> findComment(Long id);
+
 }

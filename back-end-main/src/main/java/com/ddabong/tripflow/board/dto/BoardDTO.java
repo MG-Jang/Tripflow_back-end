@@ -9,12 +9,12 @@ import lombok.ToString;
 @ToString//BoarDTO 안에는 sql의 컬럼 내용이 들어가 있다.
 public class BoardDTO {
     private Long id;
-    private String boardWriter;
-    private String boardPass;
-    private String boardTitle;
-    private String boardContents;
-    private int boardHits;
-    private String createdAt;
+    //private String boardWriter;
+    //private String boardPass;
+    //private String boardTitle;
+    //private String boardContents;
+    //private int boardHits;
+    //private String createdAt;
 
     //좋아요
     private Long likeid;
@@ -26,4 +26,11 @@ public class BoardDTO {
     private Long travelid;
     //게시물 내용
     private String content;
+    //좋아요 수
+    private Long likecount;
+    private Long commentid;
+    private  Long memeberid;
+    private  Long commentid2;
+    private  String comcomment;
+
 }
